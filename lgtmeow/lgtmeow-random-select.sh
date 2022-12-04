@@ -8,5 +8,6 @@
 # Optional parameters:
 # @raycast.icon 🐱
 
-LGTM=$(curl -s https://lgtmeow.com/ | pup '#__NEXT_DATA__ text{}' | jq -r '.props.pageProps.lgtmImages[0].imageUrl')
-echo "[![LGTMeow]($LGTM)](https://lgtmeow.com)" | pbcopy
+INDEX=$((RANDOM % 5))
+IMAGE_URL=$(curl -s https://lgtmeow.com/ | pup '#__NEXT_DATA__ text{}' | jq -r ".props.pageProps.lgtmImages[$INDEX].imageUrl")
+echo "[![LGTMeow]($IMAGE_URL)](https://lgtmeow.com)" | pbcopy
