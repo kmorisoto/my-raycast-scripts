@@ -9,5 +9,5 @@
 # @raycast.icon 🐱
 
 INDEX=$((RANDOM % 5))
-IMAGE_URL=$(curl -s https://lgtmeow.com/ | pup '#__NEXT_DATA__ text{}' | jq -r ".props.pageProps.lgtmImages[$INDEX].imageUrl")
-echo "[![LGTMeow]($IMAGE_URL)](https://lgtmeow.com)" | pbcopy
+IMAGE_URL=$( curl -s https://lgtmeow.com/ | pup '.LgtmImageContent_wrapper__lD0JJ img[src] json{}' | jq -r ".[$INDEX].src")
+echo "[![LGTMeow](https://lgtmeow.com$IMAGE_URL)](https://lgtmeow.com)" | pbcopy
